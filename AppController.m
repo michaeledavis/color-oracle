@@ -81,10 +81,8 @@ enum simulation {normalView, protan, deutan, tritan, grayscale};
 
 // Gamma for converting from screen rgb to linear rgb and back again.
 // The publication describing the algorithm uses a gamma value of 2.2, which
-// is the standard value on windows system and for sRGB. Macs mostly use a 
-// gamma value of 1.8. Differences between the two gamma settings are
-// hardly visible though.
-#define GAMMA 1.8
+// is the standard value on windows systems, sRGB, and Mac OS X starting with 10.6
+#define GAMMA 2.2
 
 enum {keyNone = -1, f1 = 0x7A, f2 = 0x78, f3 = 0x63, f4 = 0x76, f5 = 0x60, 
 	f6 = 0x61, f7 = 0x62, f8 = 0x64, f9 = 0x65, f10 = 0x6D, f11 = 0x67,
@@ -702,18 +700,18 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 		simulationBufferHeight = rows;
 	}
 	
-	long *dstBitmapData = (long*)simulationBuffer;
+	int32_t *dstBitmapData = (int32_t*)simulationBuffer;
 	
-	long prevSrc = 0;
-	long color = 0x000000ff;
+	int32_t prevSrc = 0;
+	int32_t color = 0x000000ff;
 	
 	for (r = 0; r < rows; r++) {
 		const unsigned char * srcPtr = srcBitmapData;
 		for (c = 0; c < cols; c++) {
-			if (*((long*)srcPtr) == prevSrc) {
+			if (*((int32_t*)srcPtr) == prevSrc) {
 				*(dstBitmapData++) = color;
 			} else {
-				prevSrc = *((long*)srcPtr);
+				prevSrc = *((int32_t*)srcPtr);
 				
 				// get linear rgb values in the range 0..2^15-1
 				double red = rgb2lin_red_LUT[srcPtr[0 + alphaFirst]] / 32767.;
@@ -738,11 +736,11 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 				/* Convert back to RGB (cross product with transform matrix) */
 				redOld   = red;
 				greenOld = green;
-				long ired   = (int)(255. * (redOld * 30.830854 - 
+				int32_t ired   = (int32_t)(255. * (redOld * 30.830854 -
 											greenOld * 29.832659 + blue * 1.610474));
-				long igreen = (int)(255. * (-redOld * 6.481468 + 
+				int32_t igreen = (int32_t)(255. * (-redOld * 6.481468 +
 											greenOld * 17.715578 - blue * 2.532642));
-				long iblue  = (int)(255. * (-redOld * 0.375690 - 
+				int32_t iblue  = (int32_t)(255. * (-redOld * 0.375690 -
 											greenOld * 1.199062 + blue * 14.273846));
 				
 				// convert reduced linear rgb to gamma corrected rgb
@@ -815,17 +813,17 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 		simulationBufferHeight = rows;
 	}
 	
-	long *dstBitmapData = (long*)simulationBuffer;
+	int32_t *dstBitmapData = (int32_t*)simulationBuffer;
 	
-	long prevSrc = 0;
-	long color = 0x000000ff;
+	int32_t prevSrc = 0;
+	int32_t color = 0x000000ff;
 	
 	for (r = 0; r < rows; r++) {
 		const unsigned char * srcPtr = srcBitmapData;
 		for (c = 0; c < cols; c++) {
 			// this version has been optimized for speed.
 			// see at the begining of this file for a more readable version.
-			if (*((long*)srcPtr) == prevSrc) {
+			if (*((int32_t*)srcPtr) == prevSrc) {
 				*(dstBitmapData++) = color; // re-use cached previous value
 			} else {
 				prevSrc = *((long*)srcPtr);
@@ -841,8 +839,8 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 				// also divide by 2^15 and multiply by 2^8 to scale the linear rgb to 0..255
 				// total division is by 2^15 * 2^15 / 2^8 = 2^22
 				// shift the bits by 22 places instead of dividing 
-				long r_blind = (k1 * r_lin + k2 * g_lin)  >> 22;
-				long b_blind = (k3 * r_lin - k3 * g_lin + 32768 * b_lin) >> 22;
+				int32_t r_blind = (k1 * r_lin + k2 * g_lin)  >> 22;
+				int32_t b_blind = (k3 * r_lin - k3 * g_lin + 32768 * b_lin) >> 22;
 				
 				if (r_blind < 0)
 					r_blind = 0;
@@ -855,8 +853,8 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 					b_blind = 255;
 				
 				// convert reduced linear rgb to gamma corrected rgb
-				const long red = lin2rgb_LUT[r_blind];
-				const long blue = lin2rgb_LUT[b_blind];
+				int32_t red = lin2rgb_LUT[r_blind];
+				int32_t blue = lin2rgb_LUT[b_blind];
 				
 #ifdef __BIG_ENDIAN__				
 				color = red << 24 | red << 16 | blue << 8 | 0x000000ff;
@@ -889,19 +887,6 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	// RGBA (OpenGL capture) or ARGB (Quartz capture)?
 	int alphaFirst = [screenshot bitmapFormat] & NSAlphaFirstBitmapFormat;
 	
-//	double anchor_e0 = 0.05059983 + 0.08585369 + 0.00952420;
-//	double anchor_e1 = 0.01893033 + 0.08925308 + 0.01370054;
-//	double anchor_e2 = 0.00292202 + 0.00975732 + 0.07145979;
-//	double inflection = anchor_e1 / anchor_e0;
-//	
-//	/* Set 1: regions where lambda_a=575, set 2: lambda_a=475 */
-//	double a1 = -anchor_e2 * 0.007009;
-//	double b1 = anchor_e2 * 0.0914;
-//	double c1 = anchor_e0 * 0.007009 - anchor_e1 * 0.0914;
-//	double a2 = anchor_e1 * 0.3636  - anchor_e2 * 0.2237;
-//	double b2 = anchor_e2 * 0.1284  - anchor_e0 * 0.3636;
-//	double c2 = anchor_e0 * 0.2237  - anchor_e1 * 0.1284;
-	
 	int r, c;
 	
 	int rows = [screenshot pixelsHigh];
@@ -924,18 +909,18 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 		simulationBufferHeight = rows;
 	}
 	
-	long *dstBitmapData = (long*)simulationBuffer;
+	int32_t *dstBitmapData = (int32_t*)simulationBuffer;
 	
-	long prevSrc = 0;
-	long color = 0x000000ff;
+	int32_t prevSrc = 0;
+	int32_t color = 0x000000ff;
 	
 	for (r = 0; r < rows; r++) {
 		const unsigned char * srcPtr = srcBitmapData;
 		for (c = 0; c < cols; c++) {
-			if (*((long*)srcPtr) == prevSrc) {
+			if (*((int32_t*)srcPtr) == prevSrc) {
 				*(dstBitmapData++) = color;
 			} else {
-				prevSrc = *((long*)srcPtr);
+				prevSrc = *((int32_t*)srcPtr);
 				
 				// get linear rgb values in the range 0..2^15-1
 				double red = rgb2lin_red_LUT[srcPtr[0 + alphaFirst]] / 32767.;
@@ -944,7 +929,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 
 				/* Convert to grayscale (dot product with transform matrix) */
 
-				// Step 1. sRGB color space gamma expansion (not required here?)
+				// Step 1. sRGB color space gamma expansion (not required here, as red, green, blue are already in linear RGB color space)
 //				if (red <= 0.04045)
 //					red = red/12.92;
 //				else
@@ -963,16 +948,16 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 				// Step 2. luminance calculation
 				double luminance = 0.2126*red + 0.7152*green + 0.0722*blue;
 				
-				// Step 3. gamma compression (not required here?)
-//				if (luminance > 0.0031308)
+				// Step 3. gamma compression (not required here, will be done by look-up table)
+//				if (luminance <= 0.0031308)
 //					luminance = 12.92*luminance;
 //				else
 //					luminance = 1.055*pow(luminance, 1.0/2.4) - 0.055;
 
 				// Convert to RGB [0, 255]
-				long ired   = (int)(255. * luminance);
-				long igreen = (int)(255. * luminance);
-				long iblue  = (int)(255. * luminance);
+				int32_t ired   = (int32_t)(255. * luminance);
+				int32_t igreen = (int32_t)(255. * luminance);
+				int32_t iblue  = (int32_t)(255. * luminance);
 				
 				// convert reduced linear rgb to gamma corrected rgb
 				if (ired < 0)
@@ -1028,7 +1013,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 			[self compute: 9591 k2: 23173 k3: -730];
 			break;
 		case tritan:
-			[self computeGrayscale];
+			[self computeTritan];
 			break;
 		case grayscale:
 			[self computeGrayscale];
@@ -1292,6 +1277,8 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 		[savePanel setMessage:@"Save the screen with simulated deutan color vision to a TIFF file."];
 	else if (simulationID == tritan)
 		[savePanel setMessage:@"Save the screen with simulated tritan color vision to a TIFF file."];
+    else if (simulationID == grayscale)
+		[savePanel setMessage:@"Save the screen in gray to a TIFF file."];
 	
 	// setNameFieldStringValue available with OS X 10.6 or newer
 	if ([savePanel respondsToSelector:@selector(setNameFieldStringValue:)]) {
@@ -1301,6 +1288,8 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 			[savePanel setNameFieldStringValue: @"Deuteranopia.tif"];
 		else if (simulationID == tritan)
 			[savePanel setNameFieldStringValue: @"Tritanopia.tif"];
+        else if (simulationID == grayscale)
+			[savePanel setNameFieldStringValue: @"Grayscale.tif"];
 	}
 	
 	simulationID = normal;
@@ -1493,7 +1482,7 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 	// close welcome dialog, should it still be open
 	[self closeWelcomeDialog:self];
 	simulationID = grayscale;
-	//[statusItem setImage:[NSImage imageNamed:@"menuIconTritan"]]; Ignore this for now
+	[statusItem setImage:[NSImage imageNamed:@"menuIconGray"]];
 	
 	// hide the menu if this method was called from the menu
 	if (sender != nil && sender != self)
@@ -1657,7 +1646,7 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 	imageID++;
 	if (imageID > 24)
 		imageID = 1;
-	NSString *newName = [NSString stringWithFormat:@"%i", imageID];
+	NSString *newName = [NSString stringWithFormat:@"%ld", imageID];
 	[statusItem setImage:[NSImage imageNamed:newName]];
 }
 

@@ -94,10 +94,10 @@ static OSStatus LaunchSystemEvents(ProcessSerialNumber *psnPtr)
     // Launch it!
     
     if (err == noErr) {
-        /*
-		 BJ Hack : This test seems not to work always. It sometimes 
-		 crashes the application on 10.3.9! maybe the deployment target 
-		 would have to be set to 10.3 to make this work properly. 
+        
+		 // BJ Hack : This test seems not to work always. It sometimes
+		 // crashes the application on 10.3.9! maybe the deployment target
+		 // would have to be set to 10.3 to make this work properly.
 		 
 		 if ( LSOpenApplication != NULL ) {
             LSApplicationParameters     appParams;
@@ -110,8 +110,8 @@ static OSStatus LaunchSystemEvents(ProcessSerialNumber *psnPtr)
             appParams.application = &appRef;
             
             err = LSOpenApplication(&appParams, psnPtr);
-        } else*/ {
-            FSSpec				appSpec;
+        } /*else*/ {
+            /*FSSpec				appSpec;
             LaunchParamBlockRec lpb;
             
             // Do it the compatible way on earlier systems.
@@ -136,7 +136,7 @@ static OSStatus LaunchSystemEvents(ProcessSerialNumber *psnPtr)
             }
             if (err == noErr) {
                 *psnPtr = lpb.launchProcessSN;
-            }
+            }*/
         }
     }
 

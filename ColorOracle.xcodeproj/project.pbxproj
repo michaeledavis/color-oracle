@@ -11,12 +11,12 @@
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		B8EED3CB18EB902200683D30 /* LoginItemsAE.c in Sources */ = {isa = PBXBuildFile; fileRef = B8EED3C918EB902200683D30 /* LoginItemsAE.c */; };
+		B8EED40F18EBCB3800683D30 /* menuIconGray.tif in Resources */ = {isa = PBXBuildFile; fileRef = B8EED40E18EBCB3800683D30 /* menuIconGray.tif */; };
 		BA10336609C1B3730073BCE0 /* ClickableImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA10336409C1B3730073BCE0 /* ClickableImageView.m */; };
 		BA1033E909C1C7880073BCE0 /* KeyableWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = BA1033E709C1C7880073BCE0 /* KeyableWindow.m */; };
-		BA4E750A0A06BAE600CC2E04 /* ColorOracleScriptCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4E75090A06BAE600CC2E04 /* ColorOracleScriptCommand.m */; };
 		BA854B7009C34CAB00BCBB77 /* RoundedView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA854B6C09C34CAB00BCBB77 /* RoundedView.m */; };
 		BA854B7209C34CAB00BCBB77 /* TransparentWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = BA854B6E09C34CAB00BCBB77 /* TransparentWindow.m */; };
-		BAA0A74009F2DE1E000AACAB /* LoginItemsAE.c in Sources */ = {isa = PBXBuildFile; fileRef = BAA0A73E09F2DE1E000AACAB /* LoginItemsAE.c */; };
 		BAB435A00A07AED200173879 /* menuIconAnimation.tif in Resources */ = {isa = PBXBuildFile; fileRef = BAB4359F0A07AED200173879 /* menuIconAnimation.tif */; };
 		BACFEE8308C760B900727089 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = BACFEE8208C760B900727089 /* AppController.m */; };
 		BAE1C23F09F7AE9A00A7009E /* menuIconTritan.tif in Resources */ = {isa = PBXBuildFile; fileRef = BAE1C23E09F7AE9A00A7009E /* menuIconTritan.tif */; };
@@ -61,21 +61,20 @@
 		29B97319FDCFA39411CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MainMenu.nib; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
-		32CA4F630368D1EE00C91783 /* test_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = test_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Color Oracle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Color Oracle.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8EED3C918EB902200683D30 /* LoginItemsAE.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LoginItemsAE.c; sourceTree = "<group>"; };
+		B8EED3CA18EB902200683D30 /* LoginItemsAE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginItemsAE.h; sourceTree = "<group>"; };
+		B8EED40C18EBB59500683D30 /* test_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = test_Prefix.pch; sourceTree = "<group>"; };
+		B8EED40E18EBCB3800683D30 /* menuIconGray.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = menuIconGray.tif; path = "Icon/Color Blindness Test/menuIconGray.tif"; sourceTree = "<group>"; };
 		BA10336309C1B3730073BCE0 /* ClickableImageView.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = ClickableImageView.h; sourceTree = "<group>"; };
 		BA10336409C1B3730073BCE0 /* ClickableImageView.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = ClickableImageView.m; sourceTree = "<group>"; };
 		BA1033E609C1C7880073BCE0 /* KeyableWindow.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = KeyableWindow.h; sourceTree = "<group>"; };
 		BA1033E709C1C7880073BCE0 /* KeyableWindow.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = KeyableWindow.m; sourceTree = "<group>"; };
-		BA4E75080A06BAE600CC2E04 /* ColorOracleScriptCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorOracleScriptCommand.h; sourceTree = "<group>"; };
-		BA4E75090A06BAE600CC2E04 /* ColorOracleScriptCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorOracleScriptCommand.m; sourceTree = "<group>"; };
 		BA854B6B09C34CAB00BCBB77 /* RoundedView.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = RoundedView.h; sourceTree = "<group>"; };
 		BA854B6C09C34CAB00BCBB77 /* RoundedView.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = RoundedView.m; sourceTree = "<group>"; };
 		BA854B6D09C34CAB00BCBB77 /* TransparentWindow.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TransparentWindow.h; sourceTree = "<group>"; };
 		BA854B6E09C34CAB00BCBB77 /* TransparentWindow.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = TransparentWindow.m; sourceTree = "<group>"; };
-		BAA0A73E09F2DE1E000AACAB /* LoginItemsAE.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = LoginItemsAE.c; sourceTree = "<group>"; };
-		BAA0A73F09F2DE1E000AACAB /* LoginItemsAE.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LoginItemsAE.h; sourceTree = "<group>"; };
 		BAB4359F0A07AED200173879 /* menuIconAnimation.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = menuIconAnimation.tif; sourceTree = "<group>"; };
 		BACFEE8108C760B900727089 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
 		BACFEE8208C760B900727089 /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
@@ -145,12 +144,10 @@
 				BA854B6D09C34CAB00BCBB77 /* TransparentWindow.h */,
 				BA854B6E09C34CAB00BCBB77 /* TransparentWindow.m */,
 				BAE61D5F09C5B18A001C1FB4 /* InfoText.h */,
+				B8EED3C918EB902200683D30 /* LoginItemsAE.c */,
+				B8EED3CA18EB902200683D30 /* LoginItemsAE.h */,
 				BAEF496209C56C2A00D1B983 /* Microseconds.h */,
 				BADD54B709C9679A00C76C20 /* WindowLevel.h */,
-				BAA0A73E09F2DE1E000AACAB /* LoginItemsAE.c */,
-				BAA0A73F09F2DE1E000AACAB /* LoginItemsAE.h */,
-				BA4E75080A06BAE600CC2E04 /* ColorOracleScriptCommand.h */,
-				BA4E75090A06BAE600CC2E04 /* ColorOracleScriptCommand.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -200,7 +197,7 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				32CA4F630368D1EE00C91783 /* test_Prefix.pch */,
+				B8EED40C18EBB59500683D30 /* test_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
 			name = "Other Sources";
@@ -216,6 +213,7 @@
 				BAE1C24B09F7AF3100A7009E /* menuIconDeutan.tif */,
 				BAE1C24C09F7AF3100A7009E /* menuIconProtan.tif */,
 				BAE1C23E09F7AE9A00A7009E /* menuIconTritan.tif */,
+				B8EED40E18EBCB3800683D30 /* menuIconGray.tif */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				29B97318FDCFA39411CA2CEA /* MainMenu.nib */,
@@ -291,6 +289,15 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				TargetAttributes = {
+					8D1107260486CEB800E47090 = {
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
+					};
+				};
 			};
 			buildConfigurationList = BACFEE7308C75AC100727089 /* Build configuration list for PBXProject "ColorOracle" */;
 			compatibilityVersion = "Xcode 2.4";
@@ -301,6 +308,8 @@
 				Japanese,
 				French,
 				German,
+				en,
+				Base,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* test */;
 			projectDirPath = "";
@@ -324,6 +333,7 @@
 				BAE1C24E09F7AF3100A7009E /* menuIconDeutan.tif in Resources */,
 				BAE1C24F09F7AF3100A7009E /* menuIconProtan.tif in Resources */,
 				BAB435A00A07AED200173879 /* menuIconAnimation.tif in Resources */,
+				B8EED40F18EBCB3800683D30 /* menuIconGray.tif in Resources */,
 				BAE416A90A0896BB006994E7 /* 1.png in Resources */,
 				BAE416AA0A0896BB006994E7 /* 10.png in Resources */,
 				BAE416AB0A0896BB006994E7 /* 11.png in Resources */,
@@ -376,13 +386,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
+				B8EED3CB18EB902200683D30 /* LoginItemsAE.c in Sources */,
 				BACFEE8308C760B900727089 /* AppController.m in Sources */,
 				BA10336609C1B3730073BCE0 /* ClickableImageView.m in Sources */,
 				BA1033E909C1C7880073BCE0 /* KeyableWindow.m in Sources */,
 				BA854B7009C34CAB00BCBB77 /* RoundedView.m in Sources */,
 				BA854B7209C34CAB00BCBB77 /* TransparentWindow.m in Sources */,
-				BAA0A74009F2DE1E000AACAB /* LoginItemsAE.c in Sources */,
-				BA4E750A0A06BAE600CC2E04 /* ColorOracleScriptCommand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,25 +420,15 @@
 		BACFEE7008C75AC100727089 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = test_Prefix.pch;
-				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
-				MACOSX_DEPLOYMENT_TARGET = 10.4;
 				PREBINDING = NO;
-				PRODUCT_NAME = "Color Oracle";
-				SDKROOT = macosx;
-				VALID_ARCHS = i386;
-				WRAPPER_EXTENSION = app;
 				ZERO_LINK = YES;
 			};
 			name = Debug;
@@ -437,29 +436,17 @@
 		BACFEE7108C75AC100727089 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				COPY_PHASE_STRIP = YES;
 				GCC_AUTO_VECTORIZATION = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_FAST_OBJC_DISPATCH = NO;
 				GCC_FEEDBACK_DIRECTED_OPTIMIZATION = Off;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_MODEL_TUNING = "";
 				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = test_Prefix.pch;
-				GCC_UNROLL_LOOPS = NO;
-				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
-				MACOSX_DEPLOYMENT_TARGET = 10.4;
 				PREBINDING = NO;
-				PRODUCT_NAME = "Color Oracle";
-				SDKROOT = macosx;
-				VALID_ARCHS = i386;
-				WRAPPER_EXTENSION = app;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -467,53 +454,52 @@
 		BACFEE7208C75AC100727089 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = test_Prefix.pch;
-				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
-				MACOSX_DEPLOYMENT_TARGET = 10.4;
-				PRODUCT_NAME = "Color Oracle";
-				SDKROOT = macosx;
-				VALID_ARCHS = i386;
-				WRAPPER_EXTENSION = app;
 			};
 			name = Default;
 		};
 		BACFEE7408C75AC100727089 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = stabs;
-				MACOSX_DEPLOYMENT_TARGET = 10.4;
-				SDKROOT = macosx;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				INFOPLIST_FILE = Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_NAME = "Color Oracle";
+				SDKROOT = macosx10.8;
 				STRIP_INSTALLED_PRODUCT = NO;
+				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
 		BACFEE7508C75AC100727089 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					ppc,
-					i386,
-				);
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.4;
-				SDKROOT = macosx;
+				INFOPLIST_FILE = Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_NAME = "Color Oracle";
+				SDKROOT = macosx10.8;
+				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
 		};
 		BACFEE7608C75AC100727089 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				MACOSX_DEPLOYMENT_TARGET = 10.4;
-				SDKROOT = macosx;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				INFOPLIST_FILE = Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_NAME = "Color Oracle";
+				SDKROOT = macosx10.8;
+				WRAPPER_EXTENSION = app;
 			};
 			name = Default;
 		};
